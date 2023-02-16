@@ -1,7 +1,12 @@
 <template>
   <div class="common-layout">
     <el-container style="width: 100%">
-      <el-aside width="200px">Aside</el-aside>
+      <!-- 左侧侧边栏-->
+      <el-aside width="200px">
+        <LogoBar />
+        <MenuBar />
+      </el-aside>
+
       <el-container style="width: 100%">
         <el-header>Headedddr</el-header>
         <el-main>Main</el-main>
@@ -10,7 +15,10 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import LogoBar from './components/LogoBar/index.vue'
+import MenuBar from './components/MenuBar/index.vue'
+</script>
 
 <style lang="scss">
 .common-layout {
