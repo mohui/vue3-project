@@ -51,8 +51,8 @@ const msg = ref("登录页面")
 const formSize = ref('default')
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive({
-  username: '',
-  password: ''
+  username: 'admin',
+  password: '123456'
 })
 
 const rules = reactive<FormRules>({
@@ -71,7 +71,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       setToken("tokenIsMe")
-      router.push('/home')
+      router.push('/layout')
     } else {
       console.log('error submit!', fields)
     }
