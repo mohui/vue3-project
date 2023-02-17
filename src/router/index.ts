@@ -1,4 +1,5 @@
 import {createRouter, createWebHashHistory, RouteRecordRaw} from 'vue-router'
+import Layout from '../layout/index.vue'
 
 // 路由项
 const routes: Array<RouteRecordRaw> = [
@@ -7,53 +8,41 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/login/login.vue')
     },
     {
-        path: '/layout',
-        component: () => import('../views/layout/index.vue'),
+        path: '/home',
+        name: 'home',
+        meta: {
+            title: "首页"
+        },
+        component: Layout,
         children: [
             {
-                path: "/school",
+                path: "school",
                 name: "school",
                 component: () => import("../views/school/index.vue"),
                 meta: {
                     title: "学校",
                     icon: "IMenuPatientAll"
                 }
-            },
-            {
-                path: '/home',
-                name: 'home',
-                meta: {
-                    title: '首页'
-                },
-                component: () => import('../views/home/index.vue')
             }
         ]
     },
     {
-        path: '/home',
-        name: 'home',
+        path: '/user',
+        name: 'user',
         meta: {
-            title: '首页',
+            title: '用户页面',
             icon: 'icon-menu'
         },
-        component: () => import('../views/home/index.vue'),
+        component: () => import('../views/user/index.vue'),
         children: [
             {
                 path: "index",
                 name: "index",
                 component: () => import("../views/school/index.vue"),
                 meta: {
-                    title: "学校",
+                    title: "dd ",
                     icon: "IMenuPatientAll"
                 }
-            },
-            {
-                path: '/home',
-                name: 'home',
-                meta: {
-                    title: '首页'
-                },
-                component: () => import('../views/home/index.vue')
             }
         ]
     },
@@ -76,7 +65,18 @@ export const routeMenus: Array<RouteRecordRaw> = [
             title: '首页',
             icon: 'icon-menu'
         },
-        component: () => import('../views/home/index.vue')
+        component: () => import('../views/home/index.vue'),
+        children: [
+            {
+                path: "school",
+                name: "school",
+                component: () => import("../views/school/index.vue"),
+                meta: {
+                    title: "学校",
+                    icon: "IMenuPatientAll"
+                }
+            }
+        ]
     },
     {
         path: '/hello',

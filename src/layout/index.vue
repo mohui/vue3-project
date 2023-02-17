@@ -7,9 +7,17 @@
         <MenuBar />
       </el-aside>
 
+      <!-- 右边菜单栏 -->
       <el-container style="width: 100%">
-        <el-header>Headedddr</el-header>
-        <el-main>Main</el-main>
+        <el-header>
+          <el-button type="primary" class="exit" @click="goBack">退出</el-button>
+        </el-header>
+
+        <!-- 右边主页面 -->
+        <el-main>
+          <router-view />
+        </el-main>
+
       </el-container>
     </el-container>
   </div>
@@ -18,6 +26,13 @@
 <script lang="ts" setup>
 import LogoBar from './components/LogoBar/index.vue'
 import MenuBar from './components/MenuBar/index.vue'
+
+import {useRouter} from 'vue-router'
+const router = useRouter()
+
+function goBack() {
+  router.push('/')
+}
 </script>
 
 <style lang="scss">
