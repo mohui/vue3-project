@@ -71,7 +71,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       setToken("tokenIsMe")
-      router.push('/layout')
+      router.push('/home')
     } else {
       console.log('error submit!', fields)
     }
