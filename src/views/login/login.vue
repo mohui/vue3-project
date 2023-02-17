@@ -40,6 +40,10 @@ import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 // 引入路由
 import {useRouter} from 'vue-router'
+// 导入存储token
+import {setToken} from '../../utils/auth'
+
+
 
 const router = useRouter()
 const msg = ref("登录页面")
@@ -66,6 +70,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
   await formEl.validate((valid, fields) => {
     if (valid) {
+      setToken("tokenIsMe")
       router.push('/home')
     } else {
       console.log('error submit!', fields)
