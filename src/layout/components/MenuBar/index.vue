@@ -10,7 +10,7 @@
 
     <template v-for="item in routerMenu" :key="item.name">
 
-      <el-menu-item v-if="item.children && item.children.length > 1" :index="item.name"  :route="{name: item.path}">
+      <el-menu-item v-if="item.children && item.children.length > 1" :index="item.name"  @click="toPath(item.name)">
         <el-icon><icon-menu /></el-icon>
         <template #title>{{ item.meta?.title }}aaa</template>
       </el-menu-item>
@@ -31,6 +31,12 @@ import {
   Setting,
 } from '@element-plus/icons-vue'
 import {routeMenus} from '../../../router'
+// 用点击事件跳转
+import {useRouter} from "vue-router";
+const router = useRouter()
+const toPath = (item: string) => {
+  router.push({name: item})
+}
 
 const routerMenu = computed(() => {
   return routeMenus.filter(it => {
