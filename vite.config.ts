@@ -3,6 +3,15 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 
 /**
+ * 定义全局变量
+ */
+// css: {
+//   // css预处理
+//   preprocessorOptions: {
+//     additionalData: '@import "./src/styles/variables.scss"'
+//   }
+// }
+/**
  * 改端口
  * server: {
  *     port: 3001
