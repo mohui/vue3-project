@@ -2,15 +2,26 @@
   <div class="common-layout">
     <el-container style="width: 100%">
       <!-- 左侧侧边栏-->
-      <el-aside width="200px">
-        <LogoBar />
-        <MenuBar />
+      <el-aside style="width: auto">
+        <LogoBar :collapsed="collapsed" />
+        <MenuBar :collapsed="collapsed" />
       </el-aside>
 
       <!-- 右边菜单栏 -->
       <el-container style="width: 100%">
         <el-header>
-          <el-button type="primary" class="exit" @click="goBack">退出</el-button>
+          <el-row >
+            <!-- 侧边栏开合折叠按钮 -->
+            <el-icon style="font-size: 26px;" @click="()=>{collapsed = !collapsed}">
+              <component :is="collapsed? Expand : Fold" />
+
+
+            </el-icon>
+
+
+          </el-row>
+
+
         </el-header>
 
         <!-- 右边主页面 -->
@@ -27,13 +38,18 @@
 <script lang="ts" setup>
 import LogoBar from './components/LogoBar/index.vue'
 import MenuBar from './components/MenuBar/index.vue'
-
+import HeaderBar from './components/HeaderBar/index.vue'
+import {Expand, Fold} from '@element-plus/icons-vue'
+import {ref} from 'vue'
 import {useRouter} from 'vue-router'
 const router = useRouter()
 
 function goBack() {
   router.push('/')
 }
+
+const collapsed = ref<boolean>(false)
+
 </script>
 
 <style lang="scss">
@@ -42,6 +58,9 @@ function goBack() {
   width: 100%;
   height: 100vh;
   .el-header {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
     background-color: #646cff;
     color: var(--el-text-color-primary);
     text-align: center;

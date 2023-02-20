@@ -1,11 +1,16 @@
 <template>
   <div class="logo">
     <img src="@/assets/hui.jpeg" alt="">
-    <h2 class="title">vue3-admin</h2>
+    <h2 v-show="!collapsed" class="title">vue3-admin</h2>
   </div>
 </template>
 
 <script setup lang="ts">
+defineProps({
+  collapsed: {
+    type: Boolean
+  }
+})
 </script>
 
 <style lang="scss">
