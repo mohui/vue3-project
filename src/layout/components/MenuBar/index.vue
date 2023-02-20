@@ -8,18 +8,19 @@
       class="el-menu-vertical-demo"
   >
 
-    <div v-for="item in routerMenu" :key="item.name">
-      <el-menu-item :index="item.name"  :route="{name: item.path}">
+    <template v-for="item in routerMenu" :key="item.name">
+
+      <el-menu-item v-if="item.children && item.children.length > 1" :index="item.name"  :route="{name: item.path}">
         <el-icon><icon-menu /></el-icon>
-        <template #title>{{ item.meta?.title }}</template>
+        <template #title>{{ item.meta?.title }}aaa</template>
       </el-menu-item>
-    </div>
 
 
-    <el-menu-item index="/school" route="{name= '/school'}">
-      <el-icon><setting /></el-icon>
-      <template #title>天堂之门</template>
-    </el-menu-item>
+      <el-menu-item :index="item.name" v-else  :route="{name: item.path}">
+        <el-icon><icon-menu /></el-icon>
+        <template #title>{{ item.meta?.title }}ddd</template>
+      </el-menu-item>
+    </template>
   </el-menu>
 </template>
 

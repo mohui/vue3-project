@@ -9,6 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: '/home',
+        redirect: '/home',
         name: 'home',
         meta: {
             title: "首页"
@@ -16,31 +17,32 @@ const routes: Array<RouteRecordRaw> = [
         component: Layout,
         children: [
             {
-                path: "school",
-                name: "school",
-                component: () => import("../views/school/index.vue"),
+                path: '',
+                name: 'home',
                 meta: {
-                    title: "学校",
-                    icon: "IMenuPatientAll"
-                }
+                    title: '欢迎页面',
+                    icon: 'Avatar'
+                },
+                component: () => import('../views/home/index.vue')
             }
         ]
     },
     {
         path: '/user',
+        redirect: '/user',
         name: 'user',
         meta: {
             title: '用户页面',
             icon: 'icon-menu'
         },
-        component: () => import('../views/user/index.vue'),
+        component: Layout,
         children: [
             {
-                path: "index",
-                name: "index",
-                component: () => import("../views/school/index.vue"),
+                path: "/user",
+                name: "user",
+                component: () => import("../views/user/index.vue"),
                 meta: {
-                    title: "dd ",
+                    title: "用户 ",
                     icon: "IMenuPatientAll"
                 }
             }
@@ -48,12 +50,45 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: '/hello',
+        redirect: '/hello',
         name: 'hello',
         meta: {
             title: '欢迎页面',
             icon: 'Avatar'
         },
-        component: () => import('../views/hello/index.vue')
+        component: () => Layout,
+        children: [
+            {
+                path: "/hello",
+                name: "hello",
+                component: () => import("../views/hello/index.vue"),
+                meta: {
+                    title: "欢迎页面 ",
+                    icon: "IMenuPatientAll"
+                }
+            }
+        ]
+    },
+    {
+        path: '/school',
+        redirect: '/school',
+        name: 'school',
+        meta: {
+            title: '欢迎页面',
+            icon: 'Avatar'
+        },
+        component: Layout,
+        children: [
+            {
+                path: '/school',
+                name: 'school',
+                meta: {
+                    title: '学校页面'
+                },
+                component: () => import('../views/school/index.vue')
+            }
+        ]
+
     }
 ]
 
@@ -65,15 +100,13 @@ export const routeMenus: Array<RouteRecordRaw> = [
             title: '首页',
             icon: 'icon-menu'
         },
-        component: () => import('../views/home/index.vue'),
         children: [
             {
-                path: "school",
-                name: "school",
+                path: "home",
+                name: "home",
                 component: () => import("../views/school/index.vue"),
                 meta: {
-                    title: "学校",
-                    icon: "IMenuPatientAll"
+                    title: "首页",
                 }
             }
         ]
@@ -85,7 +118,16 @@ export const routeMenus: Array<RouteRecordRaw> = [
             title: '欢迎页面',
             icon: 'Avatar'
         },
-        component: () => import('../views/hello/index.vue')
+        children: [
+            {
+                path: "hello",
+                name: "hello",
+                component: () => import("../views/hello/index.vue"),
+                meta: {
+                    title: "欢迎页面",
+                }
+            }
+        ]
     },
     {
         path: '/school',
@@ -94,7 +136,32 @@ export const routeMenus: Array<RouteRecordRaw> = [
             title: '学校页面',
             icon: 'Avatar'
         },
-        component: () => import('../views/school/index.vue')
+        children: [
+            {
+                path: "school",
+                name: "school",
+                component: () => import("../views/school/index.vue"),
+                meta: {
+                    title: "学校页面",
+                }
+            },
+            {
+                path: "primarySchool",
+                name: "primarySchool",
+                component: () => import("../views/school/index.vue"),
+                meta: {
+                    title: "小学",
+                }
+            },
+            {
+                path: "juniorHighSchool",
+                name: "juniorHighSchool",
+                component: () => import("../views/school/index.vue"),
+                meta: {
+                    title: "初中",
+                }
+            }
+        ]
     }
 ]
 

@@ -1,5 +1,8 @@
-# Vue 3 + TypeScript + Vite
+#### Vue 3 + TypeScript + Vite
+- [element-plus](https://element-plus.org/zh-CN/component/menu.html)
+- [vueRouter](https://router.vuejs.org/zh/installation.html#yarn)
 
+## 
 此模板将帮助您开始使用Vue 3和Vite中的TypeScript进行开发
 该模板使用 Vue 3 `<script setup>` ,
 查看 [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) 以了解更多信息.
