@@ -12,7 +12,8 @@ const routes: Array<RouteRecordRaw> = [
         redirect: '/home',
         name: 'home',
         meta: {
-            title: "首页"
+            title: "首页",
+            icon: 'Grid'
         },
         component: Layout,
         children: [
@@ -20,8 +21,8 @@ const routes: Array<RouteRecordRaw> = [
                 path: '',
                 name: 'home',
                 meta: {
-                    title: '欢迎页面',
-                    icon: 'Avatar'
+                    title: '首页',
+                    icon: 'Grid'
                 },
                 component: () => import('../views/home/index.vue')
             }
@@ -74,8 +75,8 @@ const routes: Array<RouteRecordRaw> = [
         redirect: '/school',
         name: 'school',
         meta: {
-            title: '欢迎页面',
-            icon: 'Avatar'
+            title: '学校页面',
+            icon: 'School'
         },
         component: Layout,
         children: [
@@ -98,7 +99,7 @@ export const routeMenus: Array<RouteRecordRaw> = [
         name: 'home',
         meta: {
             title: '首页',
-            icon: 'icon-menu'
+            icon: 'Menu'
         },
         children: [
             {
@@ -134,7 +135,7 @@ export const routeMenus: Array<RouteRecordRaw> = [
         name: 'school',
         meta: {
             title: '学校页面',
-            icon: 'Avatar'
+            icon: 'School'
         },
         children: [
             {
@@ -142,7 +143,7 @@ export const routeMenus: Array<RouteRecordRaw> = [
                 name: "school",
                 component: () => import("../views/school/index.vue"),
                 meta: {
-                    title: "学校页面",
+                    title: "学校页面"
                 }
             },
             {

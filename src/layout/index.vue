@@ -70,7 +70,7 @@ const collapsed = ref<boolean>(false)
       background-color: #888888;
       color: var(--el-text-color-primary);
       text-align: center;
-      line-height: 200px;
+      line-height: 1000px;
     }
 
   .el-main{
