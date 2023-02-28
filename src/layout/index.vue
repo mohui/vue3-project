@@ -12,12 +12,10 @@
         <el-header>
           <el-row >
             <!-- 侧边栏开合折叠按钮 -->
-            <el-icon style="font-size: 26px;" @click="()=>{collapsed = !collapsed}">
+            <el-icon style="font-size: 26px; margin-right: 15px" @click="()=>{collapsed = !collapsed}">
               <component :is="collapsed? Expand : Fold" />
-
-
             </el-icon>
-
+            <header-bar />
 
           </el-row>
 
