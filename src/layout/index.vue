@@ -59,7 +59,7 @@ const collapsed = ref<boolean>(false)
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    background-color: #646cff;
+    background-color: #f9f9f9;
     color: var(--el-text-color-primary);
     text-align: center;
     line-height: 60px;
