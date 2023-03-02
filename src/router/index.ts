@@ -71,7 +71,7 @@ const routes: Array<RouteRecordRaw> = [
         ]
     },
     {
-        path: '/school',
+        path: '',
         redirect: '/school',
         name: 'school',
         meta: {
@@ -89,7 +89,7 @@ const routes: Array<RouteRecordRaw> = [
                 component: () => import('../views/school/index.vue')
             },
             {
-                path: "primarySchool",
+                path: "/primarySchool",
                 name: "primarySchool",
                 component: () => import("../views/school/primarySchool.vue"),
                 meta: {
@@ -97,7 +97,7 @@ const routes: Array<RouteRecordRaw> = [
                 }
             },
             {
-                path: "juniorHighSchool",
+                path: "/juniorHighSchool",
                 name: "juniorHighSchool",
                 component: () => import("../views/school/juniorHighSchool.vue"),
                 meta: {
