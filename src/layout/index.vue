@@ -73,10 +73,9 @@ const collapsed = ref<boolean>(false)
     }
 
   .el-main{
-    background-color: #888888;
+    background-color: #f9f9f9;
     color: var(--el-text-color-primary);
     text-align: center;
-    line-height: 160px;
     flex: 1;
   }
 }

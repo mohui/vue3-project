@@ -2,7 +2,6 @@
   <el-tabs
       v-model="activeKey"
       type="card"
-      editable
       @tab-click ="clickHandle"
       @tab-remove="removeTab"
       @contextmenu.prevent.native="openContextMenu($event)"
