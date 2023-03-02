@@ -1,14 +1,14 @@
 <template>
   <template v-for="item in menus" :key="item.name">
 
-    <el-sub-menu v-if="item.children && item.children.length > 1" :index="item.name"  @click="toPath(item.name)">
+    <el-sub-menu v-if="item.children && item.children.length > 1" :index="item.name"  >
 
       <template #title>
         <el-icon>
           <component :is="item.meta?.icon" />
         </el-icon>
         <span>
-            {{ item.meta?.title }}多级
+            {{ item.meta?.title }}
           </span>
       </template>
       <menu-item :menus="item.children"></menu-item>
@@ -16,8 +16,15 @@
 
 
     <el-menu-item :index="item.name" v-else  :route="{name: item.path}"  @click="toPath(item.name)">
-      <el-icon> <component :is="item.meta?.icon" /> </el-icon>
-      <template #title>{{ item.meta?.title }}一级</template>
+
+      <template #title>
+        <el-icon>
+          <component :is="item.meta?.icon" />
+        </el-icon>
+        <span>
+          {{ item.meta?.title }}
+        </span>
+      </template>
     </el-menu-item>
   </template>
 </template>
