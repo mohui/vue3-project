@@ -5,6 +5,7 @@ import './style.css'
 import App from './App.vue'
 import router from './router'
 import * as ElIcons from '@element-plus/icons'
+import {store} from "@/store";
 
 const app = createApp(App)
 for (const name in ElIcons) {
@@ -14,4 +15,5 @@ for (const name in ElIcons) {
 app
     .use(ElementPlus)
     .use(router)
+    .use(store)
     .mount('#app')

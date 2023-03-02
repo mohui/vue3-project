@@ -24,7 +24,7 @@
 
         <!-- 右边主页面 -->
         <el-main>
-          111
+          <tab-bar />
           <router-view />
         </el-main>
 
@@ -37,6 +37,7 @@
 import LogoBar from './components/LogoBar/index.vue'
 import MenuBar from './components/MenuBar/index.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
+import TabBar from './components/TableBar/TabBar.vue'
 import {Expand, Fold} from '@element-plus/icons-vue'
 import {ref} from 'vue'
 import {useRouter} from 'vue-router'
@@ -72,7 +73,7 @@ const collapsed = ref<boolean>(false)
     }
 
   .el-main{
-    background-color: #00ff00;
+    background-color: #888888;
     color: var(--el-text-color-primary);
     text-align: center;
     line-height: 160px;
