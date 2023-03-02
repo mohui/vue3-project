@@ -22,7 +22,7 @@
 
 <script lang="ts" setup>
 import {computed} from 'vue'
-import {routeMenus} from '../../../router'
+import {routeMenus} from '@/router'
 // 用点击事件跳转
 import {useRouter} from "vue-router";
 const router = useRouter()
