@@ -87,6 +87,22 @@ const routes: Array<RouteRecordRaw> = [
                     title: '学校页面'
                 },
                 component: () => import('../views/school/index.vue')
+            },
+            {
+                path: "primarySchool",
+                name: "primarySchool",
+                component: () => import("../views/school/primarySchool.vue"),
+                meta: {
+                    title: "小学",
+                }
+            },
+            {
+                path: "juniorHighSchool",
+                name: "juniorHighSchool",
+                component: () => import("../views/school/juniorHighSchool.vue"),
+                meta: {
+                    title: "初中",
+                }
             }
         ]
 
@@ -108,6 +124,27 @@ export const routeMenus: Array<RouteRecordRaw> = [
                 component: () => import("../views/school/index.vue"),
                 meta: {
                     title: "首页",
+                }
+            }
+        ]
+    },
+    {
+        path: '/user',
+        redirect: '/user',
+        name: 'user',
+        meta: {
+            title: '用户页面',
+            icon: 'Menu'
+        },
+        component: Layout,
+        children: [
+            {
+                path: "/user",
+                name: "user",
+                component: () => import("../views/user/index.vue"),
+                meta: {
+                    title: "用户 ",
+                    icon: "IMenuPatientAll"
                 }
             }
         ]
