@@ -1,12 +1,14 @@
 import {createStore} from 'vuex';
 import {Itab} from './type'
 interface State {
-    tabsList: Array<Itab>
+    tabsList: Array<Itab>,
+    contextMenuTabId: string
 }
 
 export const store = createStore<State>({
     state: {
-        tabsList: []
+        tabsList: [],
+        contextMenuTabId: ''
     },
     mutations: {
         // 添加tab
@@ -20,6 +22,30 @@ export const store = createStore<State>({
         closeCurrentTab(state: State, targetName: string) {
             const index = state.tabsList.findIndex((item) => item.path == targetName);
             state.tabsList.splice(index, 1);
+        },
+        // 右键打卡菜单保存path
+        saveCurContextTabId(state: State, curtextMenuTabId) {
+            state.contextMenuTabId = curtextMenuTabId;
+        },
+        // 删除所有tab
+        closeAllTabs(state: State) {
+            state.tabsList = [];
+            // 清除缓存
+            sessionStorage.removeItem('TABS_ROUTES');
+        },
+        // 删除其他tab
+        closeOtherTabs(state: State, par: string) {
+            if (par == 'other') {
+                // 删除其他
+                state.tabsList = state.tabsList.filter((item) => item.path == state.contextMenuTabId)
+            } else if (par == 'left') {
+                // 删除左边, 拿到索引
+                const  index = state.tabsList.findIndex(item => item.path == state.contextMenuTabId)
+                state.tabsList.splice(0, index);
+            } else if (par == 'right') {
+                const  index = state.tabsList.findIndex(item => item.path == state.contextMenuTabId)
+                state.tabsList.splice(index + 1 );
+            }
         }
     },
     getters: {

@@ -18,10 +18,10 @@
     </el-tab-pane>
   </el-tabs>
   <ul v-show="contextMenuVisible" :style="{left: left + 'px', top: top + 'px'}" class="contextmenu">
-    <li>关闭所有</li>
-    <li>关闭左边</li>
-    <li>关闭右边</li>
-    <li>关闭其他</li>
+    <li @click="closeAllTabs">关闭所有</li>
+    <li @click="closeOtherTabs('left')">关闭左边</li>
+    <li @click="closeOtherTabs('right')">关闭右边</li>
+    <li @click="closeOtherTabs('other')">关闭其他</li>
   </ul>
 </template>
 <script lang="ts" setup>
@@ -120,14 +120,38 @@ const openContextMenu = (e: any) => {
   if (e.srcElement.id) {
     // 为了不要 "tab-", 拿到ID
     let currentContextTabId = e.srcElement.id.split("-")[1];
+
+    // 右键打卡
+    store.commit('saveCurContextTabId', currentContextTabId)
     // 展示出来
     contextMenuVisible.value = true;
     // 展示的位置, 效果是能出现在鼠标的点击的右下角
     left.value = e.clientX
     top.value = e.clientY + 10
   }
-  console.log(e)
 }
+
+// 关闭所有
+const closeAllTabs = () => {
+  store.commit('closeAllTabs')
+  // 把选项卡关闭
+  contextMenuVisible.value = false;
+  router.push("/home")
+}
+// 关闭其他的(包含 左边, 右边, 选中之外)
+const closeOtherTabs = (par: string) => {
+  store.commit('closeOtherTabs', par)
+  // 把选项卡关闭
+  contextMenuVisible.value = false;
+}
+// 监控右键删除列表, 如果点击, 就会消失
+watch(()=>contextMenuVisible.value, ()=> {
+  if (contextMenuVisible.value) {
+    window.addEventListener("click", ()=> contextMenuVisible.value = false)
+  } else {
+    window.removeEventListener("click", ()=> contextMenuVisible.value = false)
+  }
+})
 </script>
 
 <style lang="scss" scoped>
