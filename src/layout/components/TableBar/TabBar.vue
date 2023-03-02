@@ -5,6 +5,7 @@
       editable
       @tab-click ="clickHandle"
       @tab-remove="removeTab"
+      @contextmenu.prevent.native="openContextMenu($event)"
   >
     <el-tab-pane
         v-for="item in tabsList"
@@ -16,9 +17,15 @@
       {{ item.content }}
     </el-tab-pane>
   </el-tabs>
+  <ul v-show="contextMenuVisible" :style="{left: left + 'px', top: top + 'px'}" class="contextmenu">
+    <li>关闭所有</li>
+    <li>关闭左边</li>
+    <li>关闭右边</li>
+    <li>关闭其他</li>
+  </ul>
 </template>
 <script lang="ts" setup>
-import {computed, onMounted, ref, watch} from 'vue'
+import {computed, onMounted, Ref, ref, watch} from 'vue'
 import {useStore} from 'vuex'
 import {useRoute, useRouter} from "vue-router";
 import {Itab} from "@/store/type";
@@ -102,4 +109,48 @@ onMounted(() => {
   // 刷新保存数据
   refresh()
 })
+
+// 右击显示的东西变量, 默认不展示
+const contextMenuVisible: Ref<boolean> = ref(false);
+const left = ref('')
+const top = ref('')
+
+// 右键显示菜单列表(关闭所有, 左边, 右边, 其他)
+const openContextMenu = (e: any) => {
+  if (e.srcElement.id) {
+    // 为了不要 "tab-", 拿到ID
+    let currentContextTabId = e.srcElement.id.split("-")[1];
+    // 展示出来
+    contextMenuVisible.value = true;
+    // 展示的位置, 效果是能出现在鼠标的点击的右下角
+    left.value = e.clientX
+    top.value = e.clientY + 10
+  }
+  console.log(e)
+}
 </script>
+
+<style lang="scss" scoped>
+.contextmenu {
+  width: 100px;
+  margin: 0;
+  border: 1px solid #ccc;
+  background: #ccc;
+  z-index: 3000;
+  position: absolute;
+  list-style-type: none;
+  padding: 5px 0;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.2);
+  li {
+    margin: 0;
+    padding: 7px 16px;
+    &:hover {
+      background: #f2f2f2;
+      cursor: pointer;
+    }
+  }
+}
+</style>
