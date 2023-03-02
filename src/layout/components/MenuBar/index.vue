@@ -6,15 +6,22 @@
   >
     <template v-for="item in routerMenu" :key="item.name">
 
-      <el-menu-item v-if="item.children && item.children.length > 1" :index="item.name"  @click="toPath(item.name)">
-        <el-icon><component :is="item.meta?.icon" /></el-icon>
-        <template #title>{{ item.meta?.title }}</template>
-      </el-menu-item>
+      <el-sub-menu v-if="item.children && item.children.length > 1" :index="item.name"  @click="toPath(item.name)">
+
+        <template #title>
+          <el-icon>
+            <component :is="item.meta?.icon" />
+          </el-icon>
+          <span>
+            {{ item.meta?.title }}多级
+          </span>
+        </template>
+      </el-sub-menu>
 
 
       <el-menu-item :index="item.name" v-else  :route="{name: item.path}"  @click="toPath(item.name)">
         <el-icon> <component :is="item.meta?.icon" /> </el-icon>
-        <template #title>{{ item.meta?.title }}</template>
+        <template #title>{{ item.meta?.title }}一级</template>
       </el-menu-item>
     </template>
   </el-menu>
